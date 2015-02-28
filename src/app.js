@@ -21,7 +21,9 @@ function search(name, myArray){
 //Next 3 lines = issue
 var foodarray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American'];
 for (var i=0; i < foodarray.length; i++){
-Settings.config({foodarray[i]},{0});
+  if (Settings.data(foodarray[i])>=0)
+  {}
+  else {Settings.data(foodarray[i],0);}
 }
 var main = new UI.Card({
   title: 'Pebble.js',
@@ -67,12 +69,12 @@ var main = new UI.Card({
    });
    menu.on('select', function(e) {
      var foodchoice = e.item.title;
-     var foodchoiceelement = search(foodarray,foodchoice);
+//      var foodchoiceelement = search(foodarray,foodchoice);
      
-     console.log('Food Choice Element is '+foodchoiceelement);     
-     var frequency = Settings.data(foodchoiceelement);
+//      console.log('Food Choice Element is '+foodchoiceelement);     
+     var frequency = Settings.data(foodchoice);
      console.log('printing frequency value '+frequency);     
-     Settings.data=(foodchoice,frequency ++);/*creates and saves the new frequency*/
+     Settings.data(foodchoice,frequency + 1);/*creates and saves the new frequency*/
      console.log('printing new frequency value '+frequency);  
      console.log('frequency = '+Settings.data(foodchoice) + ' for food '+ foodchoice); /*just confirming 
      the new frequency saved to the right food type*/
