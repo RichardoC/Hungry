@@ -15,17 +15,38 @@ var main = new UI.Card({
 });
 
  main.show();
- var foodlist = ['Everything', 'Indian','Italian/Pizza','Chinese','Chippie/Fish/Chicken/American'];
+ var foodlist = [
+   {
+     title: 'Everything',
+     subtitle: ""
+   },
+   {
+     title: 'Indian',
+     subtitle: ""
+   },
+   {
+     title: 'Italian/Pizza',
+     subtitle: ""
+   },
+   {
+     title: 'Chinese',
+     subtitle: ""
+   },
+   {
+     title: 'Kebab',
+     subtitle: ""
+   },
+   {
+     title: 'Chippie/Fish/Chicken/American',
+     subtitle: ""
+   }
+ ];
  /*foodmenu = ParseFeed(foodlist)*/
  main.on('click', 'up', function(e) {
    var menu = new UI.Menu({
      sections: [{ 
      title: 'What do you fancy?',
-       for (i=0 ;i<foodlist.length; i++){
-       subtitle: foodlist[i],
-     };
-       
-     items: foodlist  
+     items: foodlist
       
    }]
    });
