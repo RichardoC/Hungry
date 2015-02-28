@@ -23,26 +23,12 @@ var main = new UI.Card({
 });
 main.show();
 
-var foodlist = [
-   {
-     title: foodArray[0]
-   },
-   {
-     title: foodArray[1]
-   },
-   {
-     title: foodArray[2]
-   },
-   {
-     title: foodArray[3]
-   },
-   {
-     title: foodArray[4]
-   },
-   {
-     title: foodArray[5]
-   }
-];
+var i = 0;
+var len = foodArray.length;
+var foodlist = [''];
+  for(i  = 0; i<len; i++) {
+  foodlist[i] = "title: " + foodArray[i];
+  }
 
 var deliveryChoice = [
   {
