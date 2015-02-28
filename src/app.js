@@ -21,6 +21,10 @@ var main = new UI.Card({
    var menu = new UI.Menu({
      sections: [{ 
      title: 'What do you fancy?',
+       for (i=0 ;i<foodlist.length; i++){
+       subtitle: foodlist[i],
+     };
+       
      items: foodlist  
       
    }]
