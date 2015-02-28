@@ -14,19 +14,23 @@ var main = new UI.Card({
   body: 'Press any button.'
 });
 
-main.show();
-var foodlist = ['Everything', 'Indian','Italian/Pizza','Chinese','Chippie/Fish/Chicken/American'];
-main.on('click', 'up', function(e) {
-  var menu = new UI.Menu({
-    sections: [{
-      items: [foodlist]}]
-  });
-  menu.on('select', function(e) {
-    console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-    console.log('The item is titled "' + e.item.title + '"');
-  });
-  menu.show();
-});
+ main.show();
+ var foodlist = ['Everything', 'Indian','Italian/Pizza','Chinese','Chippie/Fish/Chicken/American'];
+ /*foodmenu = ParseFeed(foodlist)*/
+ main.on('click', 'up', function(e) {
+   var menu = new UI.Menu({
+     sections: [{ 
+     title: 'What do you fancy?',
+     items: foodlist  
+      
+   }]
+   });
+   menu.on('select', function(e) {
+     console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
+     console.log('The item is titled "' + e.item.title + '"');
+   });
+   menu.show();
+ });
 
 main.on('click', 'select', function(e) {
   var wind = new UI.Window();
