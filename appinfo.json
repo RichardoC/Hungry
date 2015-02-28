@@ -1,7 +1,8 @@
 {
     "appKeys": {},
     "capabilities": [
-        ""
+        "location",
+        "configurable"
     ],
     "companyName": "nikitavorontsov@hotmail.com",
     "longName": "Test",
