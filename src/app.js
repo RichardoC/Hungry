@@ -7,6 +7,8 @@ var Settings = require('settings');
 var UI = require('ui');
 var Vector2 = require('vector2');
 
+foodarray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American']
+
 var main = new UI.Card({
   title: 'Pebble.js',
   icon: 'images/menu_icon.png',
@@ -55,7 +57,7 @@ var main = new UI.Card({
      Settings.config(foodchoice);
 
      frequency = Settings.data(foodchoice);
-     Settings.data=(foodchoice,frequency + 1);
+     Settings.data=(foodchoice,frequency ++);
      console.log('frequency = '+Settings.data(foodchoice) + ' for food '+ foodchoice);
      console.log(foodchoice);
      console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
