@@ -3,84 +3,123 @@
  *
  * This is where you write your app.
  */
-var Settings = require('settings');
+
 var UI = require('ui');
-var Vector2 = require('vector2');
+var Settings = require('settings');
+
+
+var foodArray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American'];
+for (var i=0; i < foodArray.length; i++){
+  if (Settings.data(foodArray[i])>=0)
+  {}
+  else {Settings.data(foodArray[i],0);}
+}
 
 var main = new UI.Card({
-  title: 'Pebble.js',
+  title: 'Hungry?',
   icon: 'images/menu_icon.png',
-  subtitle: 'Hungry?',
+  subtitle: '',
   body: 'Press any button.'
 });
+main.show();
 
- main.show();
- var foodlist = [
+var foodlist = [
    {
-     title: 'Everything',
-     subtitle: ""
+     title: foodArray[0]
    },
    {
-     title: 'Indian',
-     subtitle: ""
+     title: foodArray[1]
    },
    {
-     title: 'Italian/Pizza',
-     subtitle: ""
+     title: foodArray[2]
    },
    {
-     title: 'Chinese',
-     subtitle: ""
+     title: foodArray[3]
    },
    {
-     title: 'Kebab',
-     subtitle: ""
+     title: foodArray[4]
    },
    {
-     title: 'Chippie/Fish/Chicken/American',
-     subtitle: ""
+     title: foodArray[5]
    }
- ];
- /*foodmenu = ParseFeed(foodlist)*/
- main.on('click', 'up', function(e) {
-   var menu = new UI.Menu({
+];
+
+var deliveryChoice = [
+  {
+    title: 'Delivery!',
+  },
+  {
+    title: 'Collection!'
+  }
+];
+
+var locationChoice = [
+  {
+    title: 'Near Me',
+  },
+  {
+    title: 'Custom Postcode' //Can implement later
+  }
+];
+
+var chosenFoodType;
+var chosenDeliveryType;
+
+function doMenu() {
+  var LocationMenu = new UI.Menu({
+     sections: [{ 
+     title: 'Where to eat?',
+     items: locationChoice
+      
+     }]
+   });
+   LocationMenu.on('select', function(e) {
+  var menu = new UI.Menu({
+     sections: [{ 
+     title: 'Would you like Delivery or to Collect?',
+     items: deliveryChoice
+      
+     }]
+   });
+   menu.on('select', function(e) {
+     chosenDeliveryType = e.item.title;
+     console.log("The string stored in chosenDeliveryType is :" + chosenDeliveryType);
+   var foodChoice = new UI.Menu({
      sections: [{ 
      title: 'What do you fancy?',
      items: foodlist
       
-   }]
+     }]
    });
-   menu.on('select', function(e) {
+   foodChoice.on('select', function(e) {
      var foodchoice = e.item.title;
-     Settings.config(foodchoice);
-
-     frequency = Settings.data(foodchoice);
-     Settings.data=(foodchoice,frequency + 1);
-     console.log('frequency = '+Settings.data(foodchoice) + ' for food '+ foodchoice);
-     console.log(foodchoice);
+     chosenFoodType = e.item.title;     
+     var frequency = Settings.data(foodchoice);
+     console.log('printing frequency value '+frequency);     
+     Settings.data(foodchoice,frequency + 1);/*creates and saves the new frequency*/
+     console.log('printing new frequency value '+frequency);  
+     console.log('frequency = '+Settings.data(foodchoice) + ' for food '+ foodchoice); /*just confirming 
+     the new frequency saved to the right food type*/
      console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
      console.log('The item is titled "' + e.item.title + '"');
    });
-   menu.show();
+   foodChoice.show();
  });
-
-main.on('click', 'select', function(e) {
-  var wind = new UI.Window();
-  var textfield = new UI.Text({
-    position: new Vector2(0, 50),
-    size: new Vector2(144, 30),
-    font: 'gothic-24-bold',
-    text: 'Text Anywhere!',
-    textAlign: 'center'
+  menu.show();
   });
-  wind.add(textfield);
-  wind.show();
+  LocationMenu.show();
+}
+
+ /*foodmenu = ParseFeed(foodlist)*/
+
+main.on('click', 'up', function(e) {
+   doMenu();
+});
+
+ main.on('click', 'select', function(e) {
+  doMenu();
 });
 
 main.on('click', 'down', function(e) {
-  var card = new UI.Card();
-  card.title('A Card');
-  card.subtitle('Is a Window');
-  card.body('The simplest window type in Pebble.js.');
-  card.show();
+   doMenu();
 });
