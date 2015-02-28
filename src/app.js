@@ -7,8 +7,20 @@ var Settings = require('settings');
 var UI = require('ui');
 var Vector2 = require('vector2');
 
-foodarray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American']
+//Making a search Function for use
 
+function search(name, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].name === name) {
+            return i;
+        }
+    }
+}
+
+
+
+var foodarray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American'];
+Settings.config([{foodarray},{0,0,0,0,0,0}]);
 var main = new UI.Card({
   title: 'Pebble.js',
   icon: 'images/menu_icon.png',
@@ -54,10 +66,13 @@ var main = new UI.Card({
    });
    menu.on('select', function(e) {
      var foodchoice = e.item.title;
-     Settings.config(foodchoice);
+     var foodchoiceelement = search(foodarray,foodchoice);
+     
 
-     frequency = Settings.data(foodchoice);
-     Settings.data=(foodchoice,frequency ++);
+     var frequency = Settings.data(foodchoiceelement);
+     console.log('printing frequency value '+frequency);     
+     //Settings.data=(foodchoice,frequency ++);
+
      console.log('frequency = '+Settings.data(foodchoice) + ' for food '+ foodchoice);
      console.log(foodchoice);
      console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
