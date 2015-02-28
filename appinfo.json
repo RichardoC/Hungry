@@ -3,8 +3,8 @@
     "capabilities": [
         ""
     ],
-    "companyName": "richardftweed@gmail.com",
-    "longName": "Food Menu",
+    "companyName": "nikitavorontsov@hotmail.com",
+    "longName": "Test",
     "projectType": "pebblejs",
     "resources": {
         "media": [
@@ -31,8 +31,8 @@
             }
         ]
     },
-    "shortName": "Food Menu",
-    "uuid": "27fc9f5a-7425-4eb3-a0d9-a2e658551c1c",
+    "shortName": "Test",
+    "uuid": "7612c24b-9742-4470-bed4-b1be2d1f5348",
     "versionCode": 1,
     "versionLabel": "1.0",
     "watchapp": {
