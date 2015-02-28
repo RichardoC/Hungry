@@ -11,16 +11,18 @@ var Vector2 = require('vector2');
 
 function search(name, myArray){
     for (var i=0; i < myArray.length; i++) {
-        if (myArray[i].name === name) {
+        if (myArray[i] === name) {
             return i;
         }
     }
 }
 
 
-
+//Next 3 lines = issue
 var foodarray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American'];
-Settings.config([{foodarray},{0,0,0,0,0,0}]);
+for (var i=0; i < foodarray.length; i++){
+Settings.config({foodarray[i]},{0});
+}
 var main = new UI.Card({
   title: 'Pebble.js',
   icon: 'images/menu_icon.png',
@@ -55,7 +57,6 @@ var main = new UI.Card({
      subtitle: ""
    }
  ];
- /*foodmenu = ParseFeed(foodlist)*/
  main.on('click', 'up', function(e) {
    var menu = new UI.Menu({
      sections: [{ 
