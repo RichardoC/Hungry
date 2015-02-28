@@ -68,13 +68,13 @@ var main = new UI.Card({
      var foodchoice = e.item.title;
      var foodchoiceelement = search(foodarray,foodchoice);
      
-
+     console.log('Food Choice Element is '+foodchoiceelement);     
      var frequency = Settings.data(foodchoiceelement);
      console.log('printing frequency value '+frequency);     
-     //Settings.data=(foodchoice,frequency ++);
-
-     console.log('frequency = '+Settings.data(foodchoice) + ' for food '+ foodchoice);
-     console.log(foodchoice);
+     Settings.data=(foodchoice,frequency ++);/*creates and saves the new frequency*/
+     console.log('printing new frequency value '+frequency);  
+     console.log('frequency = '+Settings.data(foodchoice) + ' for food '+ foodchoice); /*just confirming 
+     the new frequency saved to the right food type*/
      console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
      console.log('The item is titled "' + e.item.title + '"');
    });
