@@ -1,0 +1,1 @@
+http://forums.getpebble.com/discussion/17860/pebble-js-ajax-storing-returned-data
