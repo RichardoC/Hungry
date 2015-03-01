@@ -51,7 +51,7 @@ function smenu(){
 
 var main = new UI.Card({
   title: 'Hungry?',
-  icon: 'images/menu_icon.png',
+  icon: 'images/Hungry 28 28.png',
   subtitle: '',
   body: 'Press any button.'
 });
