@@ -15,7 +15,17 @@ var locationOptions = {
   timeout: 10000
 };
 var baseURL = "http://www.just-eat.co.uk/area/";
-var foodArray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American'];
+var foodArray = ['Everything','Indian','Italian','Pizza','Chinese','Kebab','Fish and Chips'];
+var food = [null,'/indian/','/italian/','/pizza/','/chinese/','/kebab/','/fish-and-chips/'];
+
+function search(name, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i] === name) {
+            return i;
+        }
+    }
+}
+
 for (var i=0; i < foodArray.length; i++){
   if (Settings.data(foodArray[i])>=0)
   {}
@@ -50,8 +60,12 @@ function locationSuccess(pos) {
               if (!postCode && data.results[r].address_components[i].types[j] == "postal_code") {
                 postCode = data.results[r].address_components[i].long_name;
                 
-                var finalURL = baseURL+ postCode+ "/"+chosenFoodType;
+                //var finalURL = baseURL+ postCode+ "/"+chosenFoodType;
                 
+                elemental = search(chosenFoodType,foodArray)
+                foodtypeout = food[elemental]
+                var finalURL = baseURL+ postCode+foodtypeout;
+                console.log('Final URL = 'finalURL)
               }
             }
           }
@@ -189,6 +203,7 @@ function doMenu() {
    });
    foodChoice.on('select', function(e) {
      var foodchoice = e.item.title;
+     navigator.geolocation.getCurrentPosition(locationSuccess, locationError, locationOptions);
      chosenFoodType = e.item.title;     
      var frequency = Settings.data(foodchoice);
      console.log('printing frequency value '+frequency);     
