@@ -33,9 +33,17 @@ function sortby(array1,sortarray) {
     sortarray[coord]=-1;
 }
 }
+  return outarray;
+}
+function smenu(){
+  var freqarray = [];
+  for (var i=0; i < foodArray.length; i++){
+    freqarray.push(Settings.data(foodArray[i]));
+  }
+  var sortedmenu = sortby(foodArray,freqarray);
+  return sortedmenu;
 }
 
-var smenu = sortby(foodArray,Settings.data(foodChoice));
 
 //Lets sort the food array due to frequency
 var main = new UI.Card({
@@ -48,9 +56,10 @@ main.show();
 
 var i = 0;
 var len = foodArray.length;
+var sortedmenu = smenu();
 var foodlist = [''];
   for(i  = 0; i<len; i++) {
-  foodlist[i] = "title: " + foodArray[i];
+  foodlist[i] = "title: " + sortedmenu[i];
   }
 
 var deliveryChoice = [
