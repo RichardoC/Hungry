@@ -10,7 +10,6 @@ var Settings = require('settings');
 var baseURL = "http://www.just-eat.co.uk/area/";
 var postCode = "WC2R";
 var foodArray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American'];
-var searchArray = ["/","/indian","italian"]; //Elements must refer to same element as in foodArray for search
 for (var i=0; i < foodArray.length; i++){
   if (Settings.data(foodArray[i])>=0)
   {}
@@ -82,10 +81,10 @@ var foodlist = [
 
 var deliveryChoice = [
   {
-    title: 'Delivery!',
+    title: 'Delivery',
   },
   {
-    title: 'Collection!'
+    title: 'Collection'
   }
 ];
 
@@ -111,7 +110,7 @@ function doMenu() {
    LocationMenu.on('select', function(e) {
   var menu = new UI.Menu({
      sections: [{ 
-     title: 'Would you like Delivery or to Collect?',
+     title: 'Deliver or Collect?',
      items: deliveryChoice
       
      }]
