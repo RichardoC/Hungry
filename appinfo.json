@@ -4,14 +4,13 @@
         "location",
         "configurable"
     ],
-    "companyName": "nikitavorontsov@hotmail.com",
-    "longName": "Test",
+    "companyName": "NARB",
+    "longName": "Hungry?",
     "projectType": "pebblejs",
     "resources": {
         "media": [
             {
                 "file": "images/menu_icon.png",
-                "menuIcon": true,
                 "name": "IMAGE_MENU_ICON",
                 "type": "png"
             },
@@ -32,15 +31,16 @@
             },
             {
                 "file": "images/Hungry 28 28.png",
+                "menuIcon": true,
                 "name": "IMAGES_HUNGRY_28_28_PNG",
                 "type": "png"
             }
         ]
     },
-    "shortName": "Test",
+    "shortName": "Hungry?",
     "uuid": "7612c24b-9742-4470-bed4-b1be2d1f5348",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "0.1",
     "watchapp": {
         "watchface": false
     }
