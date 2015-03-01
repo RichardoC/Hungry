@@ -1,0 +1,26 @@
+var names = ["fish", "chips", "pizza", "chicken", "curry"];
+var values = [0, 4, 2, 5, 1];
+var swaps = 1;
+var tempValue = 0;
+var tempName = " ";
+
+while (swaps != 0) {
+	swaps = 0;
+	for (var i=1; i<names.length; i++) {
+		if (values[i-1] < values[i]) {
+			tempName = names[i-1];
+			tempValue = values[i-1];
+			names[i-1] = names[i];
+			values[i-1] = values[i];
+			names[i] = tempName;
+			values[i] = tempValue;
+			swaps++;
+		}
+	}
+}
+
+console.log(names[0]);
+console.log(names[1]);
+console.log(names[2]);
+console.log(names[3]);
+console.log(names[4]);
