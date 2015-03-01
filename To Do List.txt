@@ -1,0 +1,19 @@
+####To Do####
+
+Nikita
+
+For loop for menu generation
+?Where did my loops go?
+----------------------------
+Ben
+
+TBC
+----------------------------
+Richard
+
+Making the list change due to frequency
+----------------------------
+Alex
+
+Postcode from the gps coords
+----------------------------

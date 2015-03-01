@@ -7,14 +7,37 @@
 var UI = require('ui');
 var Settings = require('settings');
 
-
+var baseURL = "http://www.just-eat.co.uk/area/";
+var postCode = "WC2R";
 var foodArray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American'];
+var searchArray = ["/","/indian","italian"]; //Elements must refer to same element as in foodArray for search
 for (var i=0; i < foodArray.length; i++){
   if (Settings.data(foodArray[i])>=0)
   {}
   else {Settings.data(foodArray[i],0);}
 }
 
+function sortby(array1,sortarray) {
+  /* Sorts the first array by the second numerical array*/
+  var maxi = sortarray[0];
+  var coord = 0;
+  var outarray = [];
+  while (maxi!=-1){  /*keeps looping until all elements used*/
+    for (var i=0; i < array1.length; i++){ /*loops over the entire sort array to make sure all elements used*/
+      if (sortarray[i]>maxi){
+        maxi = sortarray[i];
+        coord = i;
+
+    }
+    outarray.push(array1[coord]);
+    sortarray[coord]=-1;
+}
+}
+}
+
+var smenu = sortby(foodArray,Settings.data(foodChoice));
+
+//Lets sort the food array due to frequency
 var main = new UI.Card({
   title: 'Hungry?',
   icon: 'images/menu_icon.png',
@@ -23,26 +46,12 @@ var main = new UI.Card({
 });
 main.show();
 
-var foodlist = [
-   {
-     title: foodArray[0]
-   },
-   {
-     title: foodArray[1]
-   },
-   {
-     title: foodArray[2]
-   },
-   {
-     title: foodArray[3]
-   },
-   {
-     title: foodArray[4]
-   },
-   {
-     title: foodArray[5]
-   }
-];
+var i = 0;
+var len = foodArray.length;
+var foodlist = [''];
+  for(i  = 0; i<len; i++) {
+  foodlist[i] = "title: " + foodArray[i];
+  }
 
 var deliveryChoice = [
   {
@@ -70,7 +79,6 @@ function doMenu() {
      sections: [{ 
      title: 'Where to eat?',
      items: locationChoice
-      
      }]
    });
    LocationMenu.on('select', function(e) {
@@ -109,6 +117,7 @@ function doMenu() {
   });
   LocationMenu.show();
 }
+var finalURL = baseURL+ postCode+ "/"+chosenFoodType;
 
  /*foodmenu = ParseFeed(foodlist)*/
 
