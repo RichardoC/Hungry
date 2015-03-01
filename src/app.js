@@ -14,38 +14,42 @@ var searchArray = ["/","/indian","italian"]; //Elements must refer to same eleme
 for (var i=0; i < foodArray.length; i++){
   if (Settings.data(foodArray[i])>=0)
   {}
-  else {Settings.data(foodArray[i],0);}
+  else {Settings.data(foodArray[i],1);}
 }
 
-function sortby(array1,sortarray) {
-  /* Sorts the first array by the second numerical array*/
-  var maxi = sortarray[0];
-  var coord = 0;
-  var outarray = [];
-  while (maxi!=-1){  /*keeps looping until all elements used*/
-    for (var i=0; i < array1.length; i++){ /*loops over the entire sort array to make sure all elements used*/
-      if (sortarray[i]>maxi){
-        maxi = sortarray[i];
-        coord = i;
-
-    }
-    outarray.push(array1[coord]);
-    sortarray[coord]=-1;
-}
-}
-  return outarray;
+function sortby(names,values){
+    var swaps = 1;
+    var tempValue = 0;
+    var tempName = " ";
+    while (swaps !== 0) {
+        swaps = 0;
+        for (var i=1; i<names.length; i++) {
+            if (values[i-1] < values[i]) {
+                tempName = names[i-1];
+                tempValue = values[i-1];
+                names[i-1] = names[i];
+                values[i-1] = values[i];
+                names[i] = tempName;
+                values[i] = tempValue;
+                swaps++;
+            }
+        }
+//console.log(names[1]);
+//console.log(names[2]);
+//console.log(names[3]);
+}return names;
+    
 }
 function smenu(){
-  var freqarray = [];
+  var freqarray = [1, 1, 1, 1, 1, 1];
   for (var i=0; i < foodArray.length; i++){
-    freqarray.push(Settings.data(foodArray[i]));
+    freqarray[i] = Settings.data(foodArray[i]);
   }
   var sortedmenu = sortby(foodArray,freqarray);
   return sortedmenu;
 }
 
 
-//Lets sort the food array due to frequency
 var main = new UI.Card({
   title: 'Hungry?',
   icon: 'images/menu_icon.png',
