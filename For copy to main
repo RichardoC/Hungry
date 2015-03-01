@@ -1,0 +1,24 @@
+function sortby(array1,sortarray) {
+  /* Sorts the first array by the second numerical array*/
+  var maxi = sortarray[0];
+  var coord = 0;
+  var outarray = [];
+  while (maxi!=-1){  /*keeps looping until all elements used*/
+    for (var i=0; i < array1.length; i++){ /*loops over the entire sort array to make sure all elements used*/
+      if (sortarray[i]>maxi){
+        maxi = sortarray[i];
+        coord = i;
+
+    }
+    outarray.push(array1[coord]);
+    sortarray[coord]=-1;
+}
+}
+}
+
+var foodArray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American'];
+
+
+//Lets sort the food array due to frequency
+
+var smenu = sortby(foodArray,Settings.data(foodChoice));
