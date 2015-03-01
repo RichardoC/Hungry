@@ -4,8 +4,8 @@
         "location",
         "configurable"
     ],
-    "companyName": "nikitavorontsov@hotmail.com",
-    "longName": "Test",
+    "companyName": "NARB",
+    "longName": "Hungry?",
     "projectType": "pebblejs",
     "resources": {
         "media": [
@@ -40,7 +40,7 @@
     "shortName": "Hungry?",
     "uuid": "7612c24b-9742-4470-bed4-b1be2d1f5348",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "0.1",
     "watchapp": {
         "watchface": false
     }
