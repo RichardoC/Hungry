@@ -17,23 +17,25 @@ for (var i=0; i < foodArray.length; i++){
   else {Settings.data(foodArray[i],0);}
 }
 
-function sortby(array1,sortarray) {
-  /* Sorts the first array by the second numerical array*/
-  var maxi = sortarray[0];
-  var coord = 0;
-  var outarray = [];
-  while (maxi!=-1){  /*keeps looping until all elements used*/
-    for (var i=0; i < array1.length; i++){ /*loops over the entire sort array to make sure all elements used*/
-      if (sortarray[i]>maxi){
-        maxi = sortarray[i];
-        coord = i;
-
-    }
-    outarray.push(array1[coord]);
-    sortarray[coord]=-1;
-}
-}
-  return outarray;
+function sortby(names,values){
+	var swaps = 1;
+	var tempValue = 0;
+	var tempName = " ";
+	while (swaps !== 0) {
+		swaps = 0;
+		for (var i=1; i<names.length; i++) {
+			if (values[i-1] < values[i]) {
+				tempName = names[i-1];
+				tempValue = values[i-1];
+				names[i-1] = names[i];
+				values[i-1] = values[i];
+				names[i] = tempName;
+				values[i] = tempValue;
+				swaps++;
+		}
+	}
+  }
+	return names;
 }
 function smenu(){
   var freqarray = [];
