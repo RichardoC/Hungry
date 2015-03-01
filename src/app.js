@@ -11,31 +11,34 @@ var baseURL = "http://www.just-eat.co.uk/area/";
 var postCode = "WC2R";
 var foodArray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American'];
 var searchArray = ["/","/indian","italian"]; //Elements must refer to same element as in foodArray for search
-for (var i=0; i < foodArray.length; i++){
+for (var i=0; i < foodArray.length; i+1){
   if (Settings.data(foodArray[i])>=0)
   {}
   else {Settings.data(foodArray[i],0);}
 }
 
 function sortby(names,values){
-	var swaps = 1;
-	var tempValue = 0;
-	var tempName = " ";
-	while (swaps !== 0) {
-		swaps = 0;
-		for (var i=1; i<names.length; i++) {
-			if (values[i-1] < values[i]) {
-				tempName = names[i-1];
-				tempValue = values[i-1];
-				names[i-1] = names[i];
-				values[i-1] = values[i];
-				names[i] = tempName;
-				values[i] = tempValue;
-				swaps++;
-		}
-	}
-  }
-	return names;
+    var swaps = 1;
+    var tempValue = 0;
+    var tempName = " ";
+    while (swaps !== 0) {
+        swaps = 0;
+        for (var i=1; i<names.length; i++) {
+            if (values[i-1] < values[i]) {
+                tempName = names[i-1];
+                tempValue = values[i-1];
+                names[i-1] = names[i];
+                values[i-1] = values[i];
+                names[i] = tempName;
+                values[i] = tempValue;
+                swaps++;
+            }
+        }
+//console.log(names[1]);
+//console.log(names[2]);
+//console.log(names[3]);
+}return names;
+    
 }
 function smenu(){
   var freqarray = [];
