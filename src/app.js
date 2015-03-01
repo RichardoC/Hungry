@@ -14,7 +14,7 @@ var searchArray = ["/","/indian","italian"]; //Elements must refer to same eleme
 for (var i=0; i < foodArray.length; i++){
   if (Settings.data(foodArray[i])>=0)
   {}
-  else {Settings.data(foodArray[i],0);}
+  else {Settings.data(foodArray[i],1);}
 }
 
 function sortby(names,values){
@@ -41,9 +41,9 @@ function sortby(names,values){
     
 }
 function smenu(){
-  var freqarray = [];
+  var freqarray = [1, 1, 1, 1, 1, 1];
   for (var i=0; i < foodArray.length; i++){
-    freqarray.push(Settings.data(foodArray[i]));
+    freqarray[i] = Settings.data(foodArray[i]);
   }
   var sortedmenu = sortby(foodArray,freqarray);
   return sortedmenu;
