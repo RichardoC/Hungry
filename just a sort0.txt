@@ -1,0 +1,36 @@
+function sortby(array1,sortarray) {
+    var mainarray = sortarray;
+    maximum = mainarray[0];
+    for (var k=0 ;k < sortarray.length-1;k=k+1){
+
+    output=[];
+
+    element = 0;
+    console.log('.');
+        for (var i=0 ;i < sortarray.length;i=i+1){
+            console.log('Max0 '+maximum);
+            console.log('sortarray[i] '+sortarray[i]);
+            console.log('Element0 '+element);
+            console.log('Equality '+(sortarray[i])>parseFloat(maximum));
+            if(parseFloat(sortarray[i]) > parseFloat(maximum)){
+                maximum == sortarray[i];
+                element = i;
+            }
+            console.log('Max '+maximum);
+            console.log('Element '+element);
+        sortarray[element]=-1;
+        console.log(sortarray);
+        output.push(array1[element]);
+        }
+
+    }
+    return output;
+    }
+
+
+var starray = ['a','b','c'];
+var freqarray = [9,4,6];
+
+var sortedstarray=sortby(starray,freqarray);
+
+console.log('printing new frequency value '+sortedstarray);
