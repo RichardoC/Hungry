@@ -14,33 +14,36 @@ var searchArray = ["/","/indian","italian"]; //Elements must refer to same eleme
 for (var i=0; i < foodArray.length; i++){
   if (Settings.data(foodArray[i])>=0)
   {}
-  else {Settings.data(foodArray[i],0);}
+  else {Settings.data(foodArray[i],1);}
 }
 
 function sortby(names,values){
-	var swaps = 1;
-	var tempValue = 0;
-	var tempName = " ";
-	while (swaps !== 0) {
-		swaps = 0;
-		for (var i=1; i<names.length; i++) {
-			if (values[i-1] < values[i]) {
-				tempName = names[i-1];
-				tempValue = values[i-1];
-				names[i-1] = names[i];
-				values[i-1] = values[i];
-				names[i] = tempName;
-				values[i] = tempValue;
-				swaps++;
-		}
-	}
-  }
-	return names;
+    var swaps = 1;
+    var tempValue = 0;
+    var tempName = " ";
+    while (swaps !== 0) {
+        swaps = 0;
+        for (var i=1; i<names.length; i++) {
+            if (values[i-1] < values[i]) {
+                tempName = names[i-1];
+                tempValue = values[i-1];
+                names[i-1] = names[i];
+                values[i-1] = values[i];
+                names[i] = tempName;
+                values[i] = tempValue;
+                swaps++;
+            }
+        }
+//console.log(names[1]);
+//console.log(names[2]);
+//console.log(names[3]);
+}return names;
+    
 }
 function smenu(){
-  var freqarray = [];
-  for (var i=0; i < foodArray.length; i+1){
-    freqarray.push(Settings.data(foodArray[i]));
+  var freqarray = [1, 1, 1, 1, 1, 1];
+  for (var i=0; i < foodArray.length; i++){
+    freqarray[i] = Settings.data(foodArray[i]);
   }
   var sortedmenu = sortby(foodArray,freqarray);
   return sortedmenu;
@@ -55,13 +58,27 @@ var main = new UI.Card({
 });
 main.show();
 
-var i = 0;
-var len = foodArray.length;
 var sortedmenu = smenu();
-var foodlist = [''];
-  for(i  = 0; i<len; i+1) {
-  foodlist[i] = "title: " + sortedmenu[i];
+var foodlist = [
+  {
+    title: sortedmenu[0]
+  },
+  {
+    title: sortedmenu[1]
+  },
+  {
+    title: sortedmenu[2]
+  },
+  {
+    title: sortedmenu[3]
+  },
+  {
+    title: sortedmenu[4]
+  },
+  {
+    title: sortedmenu[5]
   }
+];
 
 var deliveryChoice = [
   {
