@@ -58,13 +58,27 @@ var main = new UI.Card({
 });
 main.show();
 
-var i = 0;
-var len = foodArray.length;
 var sortedmenu = smenu();
-var foodlist = [''];
-  for(i  = 0; i<len; i++) {
-  foodlist[i] = "title: " + sortedmenu[i];
+var foodlist = [
+  {
+    title: sortedmenu[0]
+  },
+  {
+    title: sortedmenu[1]
+  },
+  {
+    title: sortedmenu[2]
+  },
+  {
+    title: sortedmenu[3]
+  },
+  {
+    title: sortedmenu[4]
+  },
+  {
+    title: sortedmenu[5]
   }
+];
 
 var deliveryChoice = [
   {
