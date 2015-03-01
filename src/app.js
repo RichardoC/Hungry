@@ -39,7 +39,7 @@ function sortby(names,values){
 }
 function smenu(){
   var freqarray = [];
-  for (var i=0; i < foodArray.length; i++){
+  for (var i=0; i < foodArray.length; i+1){
     freqarray.push(Settings.data(foodArray[i]));
   }
   var sortedmenu = sortby(foodArray,freqarray);
@@ -47,7 +47,6 @@ function smenu(){
 }
 
 
-//Lets sort the food array due to frequency
 var main = new UI.Card({
   title: 'Hungry?',
   icon: 'images/menu_icon.png',
@@ -60,7 +59,7 @@ var i = 0;
 var len = foodArray.length;
 var sortedmenu = smenu();
 var foodlist = [''];
-  for(i  = 0; i<len; i++) {
+  for(i  = 0; i<len; i+1) {
   foodlist[i] = "title: " + sortedmenu[i];
   }
 
