@@ -11,7 +11,7 @@ var baseURL = "http://www.just-eat.co.uk/area/";
 var postCode = "WC2R";
 var foodArray = ['Everything','Indian','Italian/Pizza','Chinese','Kebab','Chippie/Fish/Chicken/American'];
 var searchArray = ["/","/indian","italian"]; //Elements must refer to same element as in foodArray for search
-for (var i=0; i < foodArray.length; i+1){
+for (var i=0; i < foodArray.length; i++){
   if (Settings.data(foodArray[i])>=0)
   {}
   else {Settings.data(foodArray[i],0);}
@@ -42,7 +42,7 @@ function sortby(names,values){
 }
 function smenu(){
   var freqarray = [];
-  for (var i=0; i < foodArray.length; i+1){
+  for (var i=0; i < foodArray.length; i++){
     freqarray.push(Settings.data(foodArray[i]));
   }
   var sortedmenu = sortby(foodArray,freqarray);
@@ -62,7 +62,7 @@ var i = 0;
 var len = foodArray.length;
 var sortedmenu = smenu();
 var foodlist = [''];
-  for(i  = 0; i<len; i+1) {
+  for(i  = 0; i<len; i++) {
   foodlist[i] = "title: " + sortedmenu[i];
   }
 
